@@ -1,23 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 11 Février 2018 à 05:53
--- Version du serveur :  5.7.14
--- Version de PHP :  7.0.10
+-- Hôte : localhost:3306
+-- Généré le :  jeu. 22 mars 2018 à 22:10
+-- Version du serveur :  5.6.38
+-- Version de PHP :  7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de données :  `luxtrot`
+-- Base de données :  `marketplace`
 --
 
 -- --------------------------------------------------------
@@ -35,23 +29,6 @@ CREATE TABLE `adresse` (
   `certificat_residence` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `adresse`
---
-
-INSERT INTO `adresse` (`id_adresse`, `id_pays`, `ville`, `rue`, `code_postal`, `certificat_residence`) VALUES
-(41, 450, 'fianarantsoa', 'Sahalava', 301, 'http://localhost/luxtrot/uploads/profile/0db0747e8c2a7adf6fa9880a94c2bc1f.jpg'),
-(26, 450, 'tana', 'road', 101, 'http://localhost/luxtrot/uploads/profile/02f2d04cbcbf2183f7d4c9d88ad61d11.jpg'),
-(25, 450, 'Antananarivo', 'ambatofinandrahana centre', 304, 'http://localhost/luxtrot/uploads/profile/b56998131ea84d6f505c5bead3aa85e7.jpg'),
-(27, 450, 'Fianarantsoa', 'Tambohobe', 301, 'http://localhost/luxtrot/uploads/profile/84b44df6a67b04043cef17155fef2d8e.jpg'),
-(33, 450, 'tanana', 'boulevard de l europe', 101, 'http://localhost/luxtrot/uploads/profile/3107389601391effca6d97545dafba4b.jpg'),
-(40, 450, 'Antananarivo', 'Boulevard de l \'europe', 101, 'http://localhost/luxtrot/uploads/profile/5dae82484e706768ebe50564fdc6ed35.jpg'),
-(37, 450, 'antsirabe', 'Andranomanelatra', 110, 'http://localhost/luxtrot/uploads/profile/6779cf8a833ce787bcf42980cb887976.png'),
-(38, 450, 'ANGERS', '67 HA RUE DES LAURIERS', 49000, 'http://localhost/luxtrot/uploads/profile/2ebeb66fed74a57c2767147a3ab2bf23.jpg'),
-(39, 450, 'ANGERS', '67 HA RUE DES LAURIERS', 49000, 'http://localhost/luxtrot/uploads/profile/0fba855bd1172ca20dc421740803fb12.jpg'),
-(42, 450, 'Fianarantsoa', 'zaz', 301, 'http://localhost/luxtrot/uploads/profile/aeb83a1b322eecae300b0e35b17179f1.jpg'),
-(43, 450, 'Antananarivo', '67 HA', 101, 'http://localhost/luxtrot/uploads/profile/24b0aff5260801274e8cd8858568d2d4.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -62,15 +39,6 @@ CREATE TABLE `categorie` (
   `id_categorie` int(11) NOT NULL,
   `nom_categorie` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `categorie`
---
-
-INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
-(18, 'chaussure'),
-(17, 'vetement'),
-(16, 'accessoire');
 
 -- --------------------------------------------------------
 
@@ -86,14 +54,6 @@ CREATE TABLE `commande` (
   `id_produit` int(11) NOT NULL,
   `id_facture` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `commande`
---
-
-INSERT INTO `commande` (`id_commande`, `date_commande`, `qte_commande`, `id_user`, `id_produit`, `id_facture`) VALUES
-(6, '2018-01-12', 5, 1, 27, 0),
-(5, '2018-01-13', 2, 1, 26, 0);
 
 -- --------------------------------------------------------
 
@@ -124,7 +84,7 @@ CREATE TABLE `currency` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `currency`
+-- Déchargement des données de la table `currency`
 --
 
 INSERT INTO `currency` (`currency_id`, `currency_name`, `currency_code`, `symbol`, `hex`, `status`) VALUES
@@ -307,14 +267,6 @@ CREATE TABLE `facture` (
   `date_facture` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `facture`
---
-
-INSERT INTO `facture` (`id_facture`, `ref_facture`, `date_facture`) VALUES
-(1, 'fact20171115071508', '2017-11-15'),
-(2, 'fact20171115071706', '2017-11-23');
-
 -- --------------------------------------------------------
 
 --
@@ -328,25 +280,6 @@ CREATE TABLE `image_produit` (
   `link_image_2` varchar(255) DEFAULT NULL,
   `link_image_3` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `image_produit`
---
-
-INSERT INTO `image_produit` (`id_image_produit`, `link_image_pple`, `link_image_1`, `link_image_2`, `link_image_3`) VALUES
-(21, 'http://localhost/luxtrot/uploads/produit/0da36335da93ab798d58f12214ad39f7.jpg', 'http://localhost/luxtrot/uploads/produit/bfac15e1614aa824e0d770c9b8cc7e17.jpg', 'http://localhost/luxtrot/uploads/produit/b14f747be714677c1d888e736fe99a3f.jpg', 'http://localhost/luxtrot/uploads/produit/6a753331288cd86fd63e06f05a9a5638.jpg'),
-(22, 'http://localhost/luxtrot/uploads/produit/acc0275cacac0e181b6377105e09a1af.jpg', 'http://localhost/luxtrot/uploads/produit/87e17d6548ffc7bccef3a5b6f3fc8771.jpg', 'http://localhost/luxtrot/uploads/produit/62b42d04934d12aa9036ee119247e749.jpg', 'http://localhost/luxtrot/uploads/produit/894e8a1b1cca36330af5ccdf85d278d0.jpg'),
-(25, 'http://localhost/luxtrot/uploads/produit/0b0039a596ac1bb0b5df6734c04a8c5c.jpg', 'http://localhost/luxtrot/uploads/produit/c95624f81724c73a6ad0a04d64e2bdd6.jpg', 'http://localhost/luxtrot/uploads/produit/9ccafc4867f1555ccc602ebb36a62f25.jpg', 'http://localhost/luxtrot/uploads/produit/2175b17476e476bb3cba3a5198e99f58.jpg'),
-(26, 'http://localhost/luxtrot/uploads/produit/7df7adc72089396cc786f6cbc5570d62.jpg', 'http://localhost/luxtrot/uploads/produit/250af1c18333158098988632603e58f7.jpg', 'http://localhost/luxtrot/uploads/produit/34fb5a8c26e6f4ae7c198e4a731258e1.jpg', 'http://localhost/luxtrot/uploads/produit/daf09a5a2480dfa146240cb33a8a99d5.jpg'),
-(27, 'http://localhost/luxtrot/uploads/produit/1c699a4e0f19024a82c0133a95d3dd49.jpg', 'http://localhost/luxtrot/uploads/produit/968794e39e4d184bf3f8ffe536b261c2.jpg', 'http://localhost/luxtrot/uploads/produit/7c83b588a7639cb0737efe578d1c4cce.jpg', 'http://localhost/luxtrot/uploads/produit/02c080fb9cd94d027f1d5a15ff94198e.jpg'),
-(28, 'http://localhost/luxtrot/uploads/produit/ddc4d5cf13fdb142b37f1d416f804d3c.jpg', 'http://localhost/luxtrot/uploads/produit/3646b465f22508a3c1a9fd17ec3768d5.jpg', 'http://localhost/luxtrot/uploads/produit/e04499ff1201961ee553ee4ef128c638.jpg', 'http://localhost/luxtrot/uploads/produit/8e3e6f82aa3c8b8a3ea7f990ef0400cb.jpg'),
-(29, 'http://localhost/luxtrot/uploads/produit/13ef4ae1f62b9707599b5beb7f8cca77.jpg', 'http://localhost/luxtrot/uploads/produit/2d170674045a5747613948a387fb5008.jpg', 'http://localhost/luxtrot/uploads/produit/ed6e3e1cfaef347f2a8d87e1161d440d.jpg', 'http://localhost/luxtrot/uploads/produit/c3e6d2cca8a2d26316363c5d6302ef36.jpg'),
-(30, 'http://localhost/luxtrot/uploads/produit/758553ba4cdf94f9a7d9c00f5420eca6.jpeg', 'http://localhost/luxtrot/uploads/produit/700a143490f2f0fb3b53ee4a7e30b72d.jpg', 'http://localhost/luxtrot/uploads/produit/874c6278452fadac054c1c5c6c429518.jpg', 'http://localhost/luxtrot/uploads/produit/21d9b14d5ded5ff9614113d99c96f86a.jpg'),
-(31, 'http://localhost/luxtrot/uploads/produit/8a5e3fe838b70c4ab280b0cba1bfa024.jpg', 'http://localhost/luxtrot/uploads/produit/53d2cb1bc557191e03b2b919885052b5.jpg', 'http://localhost/luxtrot/uploads/produit/10d8bf6091311eac4e82db8d8c3808a0.jpg', 'http://localhost/luxtrot/uploads/produit/aa9df872154ae21ef8358f7f442201e2.jpg'),
-(32, 'http://localhost/luxtrot/uploads/produit/1fc0ddc641b04e9301fcb326b6a3e065.jpg', 'http://localhost/luxtrot/uploads/produit/3ea49600302a5f4c6df1c904651ed8c7.jpg', 'http://localhost/luxtrot/uploads/produit/6d1b86a762b509f472e6068a691b2232.jpg', 'http://localhost/luxtrot/uploads/produit/ddb39e3d4c9ff5f2c6bbf4cae53b69f9.jpg'),
-(33, 'http://localhost/luxtrot/uploads/produit/ca80989db764444a39c6a68de5a1098b.jpg', 'http://localhost/luxtrot/uploads/produit/4d0fbb9bf5a68a76a9e5513a1cd3d4c8.jpg', 'http://localhost/luxtrot/uploads/produit/e79ccfa08bc6cab8c97affd98e8d0312.jpg', 'http://localhost/luxtrot/uploads/produit/447b7bdd85312e6533c59dd2e056743f.jpg'),
-(40, 'http://localhost/luxtrot/uploads/produit/8854e2bfdab80aa53620302782c63f24.jpg', 'http://localhost/luxtrot/uploads/produit/840190e2d966515fd6c8a4616800e9af.jpg', 'http://localhost/luxtrot/uploads/produit/0c716d626a8eb18e9959f9bd33f49443.jpg', 'http://localhost/luxtrot/uploads/produit/40b37a98f9e863ad598277e033e5ef5b.jpg'),
-(39, 'http://localhost/luxtrot/uploads/produit/81f419aabc19a998a34e4b363f7a5eaf.jpg', 'http://localhost/luxtrot/uploads/produit/6f832772a51669788b16abd9140f1661.jpg', 'http://localhost/luxtrot/uploads/produit/faad94d705cb1a2f87e087f019b4ee8b.jpg', 'http://localhost/luxtrot/uploads/produit/46e392032f41cd74283aea6c5022af80.jpg');
 
 -- --------------------------------------------------------
 
@@ -366,15 +299,6 @@ CREATE TABLE `information_entreprise` (
   `acte_constitution_society` varchar(255) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `information_entreprise`
---
-
-INSERT INTO `information_entreprise` (`id_profile`, `pseudo_info`, `nom_dirigeant`, `prenom_dirigeant`, `numero_tva`, `telephone`, `image_link_piece_identity`, `coord_bancaire_society`, `acte_constitution_society`, `id_user`) VALUES
-(1, 'pseudo', 'nom', 'prenom', '30030167', '5555541102', 'http://localhost/luxtrot/uploads/info_pro/7112d3df1524236322b3c79c8583a98a.jpg', '10000950001560000', '', 1),
-(2, 'kimsociete', 'nom', 'prenom', '100001523', '111111', 'http://localhost/luxtrot/uploads/info_pro/09780b4998549a500d64ded60956a0cf.jpg', '100000000', '', 26),
-(3, 'kimsociete', 'nom', 'prenom', '100001523', '111111', 'http://localhost/luxtrot/uploads/info_pro/764b951111b636d5680b64b0f9fb1739.jpg', '100000000', '', 26);
 
 -- --------------------------------------------------------
 
@@ -399,18 +323,6 @@ CREATE TABLE `marque` (
   `nom_marque` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `marque`
---
-
-INSERT INTO `marque` (`id_marque`, `nom_marque`) VALUES
-(24, 'NIKE'),
-(23, 'ADIDAS'),
-(22, 'DELL'),
-(56, 'lacoste'),
-(55, 'caterpillar'),
-(54, 'all star');
-
 -- --------------------------------------------------------
 
 --
@@ -428,18 +340,6 @@ CREATE TABLE `message` (
   `status_view_receiver` varchar(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `message`
---
-
-INSERT INTO `message` (`id_message`, `corps_message`, `date_envoi`, `id_sender`, `id_receiver`, `status_delete_sender`, `status_delete_receiver`, `status_view_receiver`) VALUES
-(5, 'Bonjour cruz', '2017-12-12 07:30:59', 26, 1, 'N', 'N', 'N'),
-(6, 'Bonjour mahery', '2017-12-12 07:31:14', 1, 26, 'N', 'N', 'N'),
-(7, 'comment tu vas?', '2017-12-12 07:31:31', 26, 1, 'N', 'N', 'N'),
-(8, 'ça va bien merci', '2017-12-12 07:31:49', 1, 26, 'N', 'N', 'N'),
-(9, 'ton produit, il est toujours dispo?', '2017-12-12 07:32:10', 26, 1, 'N', 'N', 'N'),
-(10, 'oui, j en ai encore en stock si tu veu commander :)', '2017-12-12 07:32:34', 1, 26, 'N', 'N', 'N');
-
 -- --------------------------------------------------------
 
 --
@@ -451,30 +351,6 @@ CREATE TABLE `panier` (
   `id_produit` int(11) NOT NULL,
   `id_profile` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `panier`
---
-
-INSERT INTO `panier` (`id_panier`, `id_produit`, `id_profile`) VALUES
-(10, 27, 33),
-(18, 32, 32),
-(8, 26, 33),
-(19, 27, 32),
-(6, 27, 1),
-(21, 27, 38),
-(14, 33, 1),
-(20, 27, 1),
-(22, 33, 39),
-(23, 35, 40),
-(24, 32, 1),
-(25, 34, 1),
-(26, 39, 1),
-(27, 27, 1),
-(28, 0, 1),
-(29, 27, 1),
-(30, 27, 1),
-(31, 27, 1);
 
 -- --------------------------------------------------------
 
@@ -492,7 +368,7 @@ CREATE TABLE `pays` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `pays`
+-- Déchargement des données de la table `pays`
 --
 
 INSERT INTO `pays` (`id`, `code`, `alpha2`, `alpha3`, `nom_en_gb`, `nom_fr_fr`) VALUES
@@ -759,23 +635,6 @@ CREATE TABLE `produit` (
   `id_user` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `produit`
---
-
-INSERT INTO `produit` (`id_produit`, `nom_produit`, `type_produit`, `qte_produit`, `prix_unitaire`, `description`, `dimension`, `id_pays`, `id_marque`, `id_categorie`, `id_image`, `id_user`) VALUES
-(27, 't-shirt', 'vetement leger ', 5, 1500, 'essayer l\'experience de notre nouvel game de vetement en pur coton pour vous mettre plus a l\'aise dans vos mouvement', 'XL', 450, 23, 17, 21, 1),
-(28, 'chaussure', 'tennis de sport ', 10, 150, 'essayer l\'experience de notre nouvel game de vetement en pur coton pour vous mettre plus a l\'aise dans vos mouvement', 'XL', 450, 24, 18, 22, 1),
-(32, 'converse', 'tennis de sport ', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', '40', 450, 54, 18, 26, 1),
-(33, 'blouson', 'vetement chaud', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'XL', 450, 24, 17, 27, 1),
-(34, 'polo', 'vetement ', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'XL', 450, 24, 17, 28, 1),
-(35, 'botte', 'chaussure', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', '41', 450, 55, 18, 29, 1),
-(36, 'chemise', 'chemise', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'XL', 450, 56, 17, 30, 1),
-(37, 'casquette', 'anti soleil', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'XL', 450, 24, 17, 31, 1),
-(38, 'capuche', 'vetement chaud', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'XL', 450, 23, 17, 32, 1),
-(39, 'pantalon', 'vetement', 100, 150, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'XL', 450, 56, 17, 33, 1),
-(46, 'test', 'test', 1, 1, 'aaa', '1', 450, 23, 18, 40, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -786,15 +645,6 @@ CREATE TABLE `role` (
   `id_role` int(11) NOT NULL,
   `type_role` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `role`
---
-
-INSERT INTO `role` (`id_role`, `type_role`) VALUES
-(1, 'kim'),
-(2, 'yoko'),
-(3, 'nouveau');
 
 -- --------------------------------------------------------
 
@@ -812,20 +662,6 @@ CREATE TABLE `user_data` (
   `status_pro` varchar(10) DEFAULT NULL,
   `id_adresse` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `user_data`
---
-
-INSERT INTO `user_data` (`id_user`, `email`, `password_encrypted`, `salt`, `date_creation`, `id_role`, `status_pro`, `id_adresse`) VALUES
-(1, 'cruz@gmail.com', '4dae8857db9fec2c9f488ae0d87ff4b3', '52c7915d4e0b6d93268b1f63bfd4578b', '2017-11-24 08:18:33', 1, 'P', 25),
-(26, 'mahery@gmail.com', '04961939875e762f0853c2d577ca384b', '469147ce7dec55db89d691892e513f71', '2017-11-27 01:15:48', 3, 'E', 26),
-(41, 'zaza@gmail.com', '9abb900b749d08d87da1d96eca6ef33f', '8ba97607a1485ccdbe19745ed80cd52d', '2018-02-07 11:28:26', 1, 'P', 42),
-(42, 'email@gmail.com', '05bf1f2b9440a35ab5542906bf88cdde', '0c83f57c786a0b4a39efab23731c7ebc', '2018-02-09 07:09:52', 1, 'P', 43),
-(32, 'fanouh@gmail.com', '1b07806e88f0903058c2f306ab2f5065', '083c4093a27e77a132fb72cae42f581d', '2018-01-12 08:54:26', 1, 'P', 37),
-(33, 'mozart@gmail.com', 'c11e91a51d5a63600a5761fc14165d14', 'e842795b282293fd61bc294c49edb12b', '2018-01-12 08:54:55', 1, 'P', 27),
-(34, 'sefo@gmail.com', 'cf05a3e07a26506f46302510d432e3f9', 'dfdb6ee373fffa05ed280e559bd43082', '2018-01-12 11:37:01', 1, 'P', 38),
-(40, 'louv@gmail.com', '8601d89114fe0709bd687312c774c2cf', 'c09f66284a8cefb2a89c1fdd779e892d', '2018-02-06 06:23:55', 1, 'P', 41);
 
 -- --------------------------------------------------------
 
@@ -851,21 +687,7 @@ CREATE TABLE `user_profile` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `user_profile`
---
-
-INSERT INTO `user_profile` (`id_profile`, `pseudo_profile`, `nom_profile`, `prenom_profile`, `contact_profile`, `sexe_profile`, `date_naiss_profile`, `image_link_profile`, `piece_identite_profile`, `coord_bancaire_profile`, `langue_parle_profile`, `text_marketing_profile`, `id_pays_profile`, `id_user`) VALUES
-(19, 'Fandresena', 'Ravoninahidraibe', 'Mahery', '0338171117', 'Homme', '1996-04-07', 'http://localhost/luxtrot/uploads/info_pro/3eef3e1b11997c154767053d40439df4.jpg', 'http://localhost/luxtrot/uploads/profile/2431d21698af7ccf9d99386053455b06.jpg', '202010900', 'francais', 'Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac impe', 450, 1),
-(40, 'Kim_mozart', 'Giselman', 'Ravoninahidraibe', '0340610655', 'Homme', '1994-02-17', 'http://localhost/luxtrot/uploads/info_pro/11c004ca83edfc60a0694748e1ae0e72.jpg', 'http://localhost/luxtrot/uploads/profile/6ff1e8ef781c70c00d2c23a815538bf9.jpg', '202010011900', 'francais', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte', 450, 33),
-(53, 'sefo', 'sefo', 'chef', '0338172305', 'Femme', '0000-00-00', 'http://localhost/luxtrot/uploads/profile/5f465001ff3d519387bcd644502fc3dd.jpg', 'http://localhost/luxtrot/uploads/profile/164dcf935bb51a077db8af8768e82371.jpg', '110000115', 'undefined', 'bonjour tout le monde', 450, 34),
-(52, 'IaryFanou', 'Hary', 'Fanomezana', '0338172305', 'femme', '0000-00-00', 'http://localhost/luxtrot/uploads/profile/e26275b1271f51718301ee4bddc7d6a2.jpg', 'http://localhost/luxtrot/uploads/profile/d9fe703f7da51864eb68ead30e82778d.jpg', '123456', 'undefined', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte', 450, 32),
-(55, 'kim', 'ravoninahidraibe', 'tomy', '0338172305', 'homme', '0000-00-00', 'http://localhost/luxtrot/uploads/profile/1b67e39a06bac20d7522e4b631f7209a.jpg', 'http://localhost/luxtrot/uploads/profile/85da5c4689d420d17942c74840c2e7dd.jpeg', '123456', 'undefined', 'Bonjour, je suis nouveau dans l\'application, et je suis faciné par la mode', 450, 39),
-(56, 'Kim', 'Louv', 'Box', '0338172305', 'Homme', '0000-00-00', 'http://localhost/luxtrot/uploads/profile/94a2ddcc938518c531bfc0001f1a59b5.jpg', 'http://localhost/luxtrot/uploads/profile/f66f07f8ba717aca7f7953227c3c33f5.jpg', '110000115', 'undefined', 'coucou c est moi', 450, 40),
-(57, 'kim', 'zaza', 'zaza', '03333', 'homme', '0000-00-00', 'http://localhost/luxtrot/uploads/profile/b145559de2565d2d89f865475c008d67.jpg', 'http://localhost/luxtrot/uploads/profile/0d4e9c690740fad379f789ee4cf07279.jpg', '110000115', 'undefined', 'welcome', 450, 41),
-(58, 'kim', 'google', 'email', '0338172305', 'homme', '0000-00-00', 'http://localhost/luxtrot/uploads/profile/2e85f6309f282efce6566e0660c79bdd.jpg', 'http://localhost/luxtrot/uploads/profile/083f3a2bde1530521e11835b2b67e810.jpg', '110000115', 'undefined', 'hello world', 450, 42);
-
---
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -987,94 +809,107 @@ ALTER TABLE `user_profile`
   ADD PRIMARY KEY (`id_profile`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
 -- AUTO_INCREMENT pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  MODIFY `id_adresse` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_adresse` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
   MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `currency`
 --
 ALTER TABLE `currency`
   MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+
 --
 -- AUTO_INCREMENT pour la table `dimension`
 --
 ALTER TABLE `dimension`
   MODIFY `id_dimension` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `image_produit`
 --
 ALTER TABLE `image_produit`
-  MODIFY `id_image_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_image_produit` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `information_entreprise`
 --
 ALTER TABLE `information_entreprise`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `like`
 --
 ALTER TABLE `like`
   MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `marque`
 --
 ALTER TABLE `marque`
-  MODIFY `id_marque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_marque` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `panier`
 --
 ALTER TABLE `panier`
-  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `pays`
 --
 ALTER TABLE `pays`
   MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `user_data`
 --
 ALTER TABLE `user_data`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT;
